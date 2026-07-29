@@ -1,4 +1,3 @@
-```markdown
 # 🖥️ TechStart Network Lab
 
 <div align="center">
@@ -54,6 +53,8 @@ Durante o laboratório foram aplicados conceitos fundamentais de redes, como **V
   ## 🌐 Conceitos aplicados
   
 </div>
+
+---
 
 ### VLAN (Virtual Local Area Network)
 
@@ -167,6 +168,8 @@ Neste projeto, o próprio roteador foi configurado como servidor DHCP.
   ## ⚙️ Configurações realizadas
   
 </div>
+
+---
 
 ### 1. Criação das VLANs
 
@@ -369,4 +372,3 @@ Durante o projeto foram praticados:
   <sub>Desenvolvido com ❤️ para o aprendizado de redes</sub>
   
 </div>
-```
