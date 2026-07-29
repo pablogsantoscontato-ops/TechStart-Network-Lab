@@ -4,7 +4,7 @@
 
 Este projeto consiste na criação de uma infraestrutura de rede corporativa simulada utilizando o **Cisco Packet Tracer**.
 
-O laboratório representa uma empresa fictícia chamada **TechStart**, que precisa melhorar sua organização de rede, separando seus departamentos e criando uma infraestrutura mais eficiente e escalável.
+O laboratório representa uma empresa fictícia chamada **TechStart**, que necessita melhorar sua organização de rede, separando seus departamentos e criando uma infraestrutura mais eficiente, segura e escalável.
 
 O objetivo é aplicar na prática conceitos fundamentais de redes de computadores, simulando um ambiente próximo ao encontrado em uma empresa real.
 
@@ -19,14 +19,14 @@ A empresa TechStart possui os seguintes departamentos:
 * Recursos Humanos (RH)
 * Diretoria
 
-Atualmente, todos os computadores estão conectados na mesma rede, dificultando a organização, gerenciamento e expansão da infraestrutura.
+Atualmente, todos os computadores estão conectados na mesma rede, dificultando o gerenciamento, organização e expansão da infraestrutura.
 
-A equipe de TI solicitou uma nova arquitetura de rede com:
+A equipe de TI solicitou uma nova arquitetura de rede contendo:
 
-* Separação dos departamentos.
+* Separação dos departamentos utilizando VLANs.
 * Melhor organização dos endereços IP.
 * Configuração automática dos dispositivos.
-* Comunicação eficiente entre equipamentos de rede.
+* Comunicação entre diferentes redes.
 * Estrutura preparada para crescimento futuro.
 
 ---
@@ -37,6 +37,7 @@ Neste laboratório serão implementados:
 
 * Segmentação da rede utilizando VLANs.
 * Comunicação entre switches através de links Trunk.
+* Roteamento entre VLANs utilizando Router-on-a-Stick.
 * Planejamento de endereçamento IP utilizando VLSM.
 * Distribuição automática de endereços IP utilizando DHCP.
 * Testes de conectividade para validar o funcionamento da rede.
@@ -53,34 +54,34 @@ Neste laboratório serão implementados:
 
 ## VLAN (Virtual Local Area Network)
 
-As VLANs serão utilizadas para separar logicamente os departamentos da empresa, criando redes independentes dentro da mesma infraestrutura física.
+As VLANs foram utilizadas para separar logicamente os departamentos da empresa, criando redes independentes dentro da mesma infraestrutura física.
 
 ## Trunk
 
-Os links Trunk serão utilizados para permitir que múltiplas VLANs sejam transportadas entre switches através de uma única conexão.
+Os links Trunk foram utilizados para transportar múltiplas VLANs entre switches através de uma única conexão utilizando o protocolo IEEE 802.1Q.
 
 ## VLSM (Variable Length Subnet Mask)
 
-O VLSM será aplicado para dividir a rede IP de forma eficiente, criando sub-redes de diferentes tamanhos conforme a necessidade de cada departamento.
+O VLSM foi aplicado para dividir a rede IP de forma eficiente, criando sub-redes de diferentes tamanhos conforme a necessidade de cada departamento.
+
+## Router-on-a-Stick
+
+O Router-on-a-Stick foi utilizado para permitir a comunicação entre diferentes VLANs utilizando subinterfaces em uma única interface física do roteador.
 
 ## DHCP (Dynamic Host Configuration Protocol)
 
-O DHCP será utilizado para configurar automaticamente os computadores da rede, fornecendo:
+O DHCP foi configurado para distribuir automaticamente:
 
 * Endereço IP.
 * Máscara de sub-rede.
-* Gateway.
+* Gateway padrão.
 * Servidor DNS.
-
-## Subnetting
-
-O subnetting será utilizado para dividir uma rede maior em redes menores e organizadas.
 
 ---
 
 # 🖥️ Estrutura da rede
 
-A rede será dividida utilizando VLANs:
+A rede foi dividida utilizando VLANs:
 
 | VLAN    | Departamento | Quantidade de hosts |
 | ------- | ------------ | ------------------- |
@@ -93,20 +94,20 @@ A rede será dividida utilizando VLANs:
 
 # 🌐 Planejamento de endereçamento IP (VLSM)
 
-A rede inicial disponibilizada para a empresa será:
+A rede inicial disponibilizada para a empresa:
 
 ```
 192.168.1.0/24
 ```
 
-O método VLSM será utilizado para criar sub-redes de acordo com a necessidade de cada departamento.
+O método VLSM foi utilizado para criar sub-redes conforme a quantidade de dispositivos de cada setor.
 
-| VLAN    | Departamento | Rede             | Máscara         | Hosts disponíveis |
-| ------- | ------------ | ---------------- | --------------- | ----------------- |
-| VLAN 10 | Financeiro   | 192.168.1.0/26   | 255.255.255.192 | 62 hosts          |
-| VLAN 20 | TI           | 192.168.1.64/27  | 255.255.255.224 | 30 hosts          |
-| VLAN 30 | RH           | 192.168.1.96/28  | 255.255.255.240 | 14 hosts          |
-| VLAN 40 | Diretoria    | 192.168.1.112/28 | 255.255.255.240 | 14 hosts          |
+| VLAN    | Departamento | Rede             | Máscara         | Hosts disponíveis | Gateway       |
+| ------- | ------------ | ---------------- | --------------- | ----------------- | ------------- |
+| VLAN 10 | Financeiro   | 192.168.1.0/26   | 255.255.255.192 | 62 hosts          | 192.168.1.1   |
+| VLAN 20 | TI           | 192.168.1.64/27  | 255.255.255.224 | 30 hosts          | 192.168.1.65  |
+| VLAN 30 | RH           | 192.168.1.96/28  | 255.255.255.240 | 14 hosts          | 192.168.1.97  |
+| VLAN 40 | Diretoria    | 192.168.1.112/28 | 255.255.255.240 | 14 hosts          | 192.168.1.113 |
 
 ---
 
@@ -126,10 +127,16 @@ Máscara:
 255.255.255.192
 ```
 
-Faixa de hosts:
+Gateway:
 
 ```
-192.168.1.1 - 192.168.1.62
+192.168.1.1
+```
+
+Faixa disponível para dispositivos:
+
+```
+192.168.1.2 - 192.168.1.62
 ```
 
 Broadcast:
@@ -154,10 +161,16 @@ Máscara:
 255.255.255.224
 ```
 
-Faixa de hosts:
+Gateway:
 
 ```
-192.168.1.65 - 192.168.1.94
+192.168.1.65
+```
+
+Faixa disponível para dispositivos:
+
+```
+192.168.1.66 - 192.168.1.94
 ```
 
 Broadcast:
@@ -182,10 +195,16 @@ Máscara:
 255.255.255.240
 ```
 
-Faixa de hosts:
+Gateway:
 
 ```
-192.168.1.97 - 192.168.1.110
+192.168.1.97
+```
+
+Faixa disponível para dispositivos:
+
+```
+192.168.1.98 - 192.168.1.110
 ```
 
 Broadcast:
@@ -210,10 +229,16 @@ Máscara:
 255.255.255.240
 ```
 
-Faixa de hosts:
+Gateway:
 
 ```
-192.168.1.113 - 192.168.1.126
+192.168.1.113
+```
+
+Faixa disponível para dispositivos:
+
+```
+192.168.1.114 - 192.168.1.126
 ```
 
 Broadcast:
@@ -226,6 +251,22 @@ Broadcast:
 
 # 📡 Topologia da rede
 
+Estrutura utilizada:
+
+```
+                 Router 1941
+                     |
+                  Trunk
+                     |
+                Switch Core
+                     |
+        ┌────────────┼────────────┐
+        |            |            |
+     SW-FIN      SW-TI-RH       SW-DIR
+
+     VLAN 10    VLAN 20/30     VLAN 40
+```
+
 Imagem da topologia criada no Cisco Packet Tracer:
 
 **(Adicionar imagem aqui)**
@@ -236,32 +277,98 @@ Imagem da topologia criada no Cisco Packet Tracer:
 
 ## VLANs
 
-**(Adicionar informações das VLANs configuradas aqui)**
+VLANs configuradas:
+
+```
+VLAN 10 - FINANCEIRO
+VLAN 20 - TI
+VLAN 30 - RH
+VLAN 40 - DIRETORIA
+```
+
+Print da configuração:
+
+**(Adicionar imagem aqui)**
 
 ---
 
 ## Links Trunk
 
-**(Adicionar informações dos links Trunk aqui)**
+Links configurados:
+
+```
+SW-Core Fa0/10  → SW-FIN
+SW-Core Fa0/15  → SW-TI-RH
+SW-Core Fa0/20  → SW-DIR
+SW-Core Gi0/1   → Router
+```
+
+Todos configurados utilizando:
+
+```
+802.1Q Trunk
+```
+
+Print:
+
+**(Adicionar imagem aqui)**
+
+---
+
+## Router-on-a-Stick
+
+Subinterfaces configuradas no roteador:
+
+```
+GigabitEthernet0/0.10 → VLAN 10
+GigabitEthernet0/0.20 → VLAN 20
+GigabitEthernet0/0.30 → VLAN 30
+GigabitEthernet0/0.40 → VLAN 40
+```
+
+Print:
+
+**(Adicionar imagem aqui)**
 
 ---
 
 ## DHCP
 
-**(Adicionar informações da configuração DHCP aqui)**
+Pools DHCP configurados:
+
+```
+FINANCEIRO
+TI
+RH
+DIRETORIA
+```
+
+Cada pool entrega:
+
+* IP
+* Máscara
+* Gateway
+* DNS
+
+Print:
+
+**(Adicionar imagem aqui)**
 
 ---
 
 # 🧪 Testes realizados
 
-Testes que serão realizados:
+Testes realizados:
 
-* [ ] Dispositivos recebendo IP via DHCP.
+* [x] Dispositivo recebendo IP via DHCP.
 * [ ] Comunicação dentro das VLANs.
-* [ ] Funcionamento dos links Trunk.
+* [ ] Comunicação entre VLANs.
+* [x] Funcionamento dos links Trunk.
 * [ ] Testes de conectividade utilizando ping.
 
-**(Adicionar prints dos testes aqui)**
+Prints dos testes:
+
+**(Adicionar imagem aqui)**
 
 ---
 
@@ -272,6 +379,7 @@ Adicionar imagens:
 * Topologia da rede.
 * Configuração das VLANs.
 * Funcionamento do DHCP.
+* Configuração do Router-on-a-Stick.
 * Testes de conectividade.
 
 ---
@@ -281,10 +389,12 @@ Adicionar imagens:
 Este projeto tem como objetivo desenvolver conhecimentos práticos em:
 
 * Fundamentos de redes.
+* VLANs e segmentação de redes.
+* Configuração de equipamentos Cisco.
 * Planejamento de endereçamento IP.
-* Configuração de redes Cisco.
-* Segmentação de redes.
-* Organização de infraestrutura.
+* VLSM.
+* DHCP.
+* Roteamento entre redes.
 * Conceitos utilizados em redes e cibersegurança.
 
 ---
