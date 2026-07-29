@@ -2,33 +2,107 @@
 
 ## 📌 Sobre o projeto
 
-Projeto de infraestrutura de rede corporativa desenvolvido no **Cisco Packet Tracer**.
+Projeto de infraestrutura de rede corporativa desenvolvido utilizando o **Cisco Packet Tracer**.
 
-O objetivo foi criar uma rede organizada para a empresa fictícia **TechStart**, realizando a separação dos departamentos através de VLANs, configuração de Trunks, planejamento IP com VLSM, roteamento entre VLANs e distribuição automática de endereços utilizando DHCP.
+O cenário representa a empresa fictícia **TechStart**, que precisava melhorar sua organização de rede através da separação dos departamentos, controle de endereçamento IP e comunicação eficiente entre os dispositivos.
+
+Durante o laboratório foram aplicados conceitos fundamentais de redes, como **VLANs, Trunk, VLSM, Router-on-a-Stick e DHCP**.
 
 ---
 
-# 🎯 Objetivos
+# 🎯 Objetivos do projeto
 
-- Implementar segmentação de rede utilizando VLANs.
-- Configurar comunicação entre switches através de links Trunk.
-- Realizar subnetting utilizando VLSM.
-- Configurar Router-on-a-Stick para comunicação entre VLANs.
-- Implementar DHCP para configuração automática dos dispositivos.
-- Realizar testes de conectividade.
+- Separar departamentos utilizando VLANs.
+- Melhorar a organização da rede através de subnetting.
+- Permitir comunicação entre diferentes VLANs.
+- Automatizar a configuração dos computadores utilizando DHCP.
+- Validar o funcionamento através de testes de conectividade.
+
+---
+
+# 🛠️ Ferramenta utilizada
+
+- Cisco Packet Tracer
+
+---
+
+# 🌐 Conceitos aplicados
+
+## VLAN (Virtual Local Area Network)
+
+VLANs permitem dividir uma rede física em redes lógicas independentes.
+
+Neste projeto, cada departamento recebeu uma VLAN própria, reduzindo o tráfego de broadcast e melhorando a organização da infraestrutura.
+
+Exemplo:
+
+- VLAN 10 → Financeiro
+- VLAN 20 → TI
+- VLAN 30 → RH
+- VLAN 40 → Diretoria
+
+---
+
+## Trunk (802.1Q)
+
+O Trunk é utilizado para transportar várias VLANs através de um único link entre equipamentos de rede.
+
+Neste projeto, os links Trunk foram configurados entre os switches e o roteador para permitir que todas as VLANs fossem transmitidas pela infraestrutura.
+
+---
+
+## VLSM (Variable Length Subnet Mask)
+
+O VLSM permite dividir uma rede IP em sub-redes de tamanhos diferentes, aproveitando melhor os endereços disponíveis.
+
+A rede inicial utilizada foi:
+
+```
+192.168.1.0/24
+```
+
+Ela foi dividida conforme a quantidade de dispositivos de cada departamento.
+
+---
+
+## Router-on-a-Stick
+
+O Router-on-a-Stick permite que um único roteador faça o roteamento entre várias VLANs utilizando subinterfaces.
+
+Cada subinterface representa o gateway de uma VLAN.
+
+Exemplo:
+
+```
+VLAN 10 → 192.168.1.1
+VLAN 20 → 192.168.1.65
+VLAN 30 → 192.168.1.97
+VLAN 40 → 192.168.1.113
+```
+
+---
+
+## DHCP (Dynamic Host Configuration Protocol)
+
+O DHCP permite que os computadores recebam automaticamente:
+
+- Endereço IP.
+- Máscara de rede.
+- Gateway.
+- Configurações necessárias para comunicação.
+
+Neste projeto, o próprio roteador foi configurado como servidor DHCP.
 
 ---
 
 # 🏢 Estrutura da rede
 
-Departamentos:
-
-| VLAN | Departamento | Hosts |
+| VLAN | Departamento | Quantidade de hosts |
 |---|---|---|
-| 10 | Financeiro | 50 |
-| 20 | TI | 20 |
-| 30 | RH | 10 |
-| 40 | Diretoria | 5 |
+| VLAN 10 | Financeiro | 50 |
+| VLAN 20 | TI | 20 |
+| VLAN 30 | RH | 10 |
+| VLAN 40 | Diretoria | 5 |
 
 ---
 
@@ -39,12 +113,6 @@ Departamentos:
 ---
 
 # 🌐 Planejamento IP (VLSM)
-
-Rede inicial:
-
-```
-192.168.1.0/24
-```
 
 | VLAN | Rede | Máscara | Gateway |
 |---|---|---|---|
@@ -58,6 +126,8 @@ Rede inicial:
 # ⚙️ Configurações realizadas
 
 ## 1. Criação das VLANs
+
+As VLANs foram criadas nos switches para separar os departamentos.
 
 Comandos utilizados:
 
@@ -94,7 +164,7 @@ Resultado:
 
 # 2. Configuração dos links Trunk
 
-Os links entre os switches foram configurados como trunk para transportar múltiplas VLANs.
+Os links Trunk permitem o transporte das VLANs entre os equipamentos.
 
 Comando utilizado:
 
@@ -118,9 +188,9 @@ Resultado:
 
 # 3. Configuração do Router-on-a-Stick
 
-O roteador foi configurado com subinterfaces para realizar o roteamento entre VLANs.
+Foram criadas subinterfaces no roteador para cada VLAN.
 
-Exemplo VLAN 10:
+Exemplo:
 
 ```bash
 interface gigabitEthernet 0/0.10
@@ -130,33 +200,21 @@ encapsulation dot1Q 10
 ip address 192.168.1.1 255.255.255.192
 ```
 
-VLAN 20:
+Outras VLANs:
 
 ```bash
 interface gigabitEthernet 0/0.20
-
 encapsulation dot1Q 20
-
 ip address 192.168.1.65 255.255.255.224
-```
 
-VLAN 30:
 
-```bash
 interface gigabitEthernet 0/0.30
-
 encapsulation dot1Q 30
-
 ip address 192.168.1.97 255.255.255.240
-```
 
-VLAN 40:
 
-```bash
 interface gigabitEthernet 0/0.40
-
 encapsulation dot1Q 40
-
 ip address 192.168.1.113 255.255.255.240
 ```
 
@@ -174,7 +232,7 @@ Resultado:
 
 # 4. Configuração DHCP
 
-O roteador foi configurado como servidor DHCP para entregar IP automaticamente aos dispositivos.
+Criação dos pools DHCP para cada VLAN.
 
 Exemplo:
 
@@ -194,7 +252,7 @@ show ip dhcp pool
 
 ![Pools DHCP](screenshots/dhcp-pools.png)
 
-Verificação dos IPs entregues:
+Verificação dos IPs distribuídos:
 
 ```bash
 show ip dhcp binding
@@ -230,27 +288,21 @@ Resultado:
 
 ---
 
-# 📚 Conceitos aprendidos
+# 📚 Conhecimentos desenvolvidos
 
-Durante o desenvolvimento do projeto foram aplicados:
+Durante o projeto foram praticados:
 
-- VLAN e segmentação de redes.
-- Trunk 802.1Q.
-- Endereçamento IPv4.
-- Subnetting e VLSM.
-- Router-on-a-Stick.
-- DHCP.
-- Troubleshooting utilizando comandos Cisco.
-
----
-
-# 🛠️ Ferramentas utilizadas
-
-- Cisco Packet Tracer
-- Equipamentos Cisco simulados
+- Configuração de switches Cisco.
+- Criação e gerenciamento de VLANs.
+- Configuração de links Trunk.
+- Planejamento de endereçamento IPv4.
+- Subnetting utilizando VLSM.
+- Comunicação entre redes utilizando roteamento.
+- Configuração de DHCP.
+- Testes e troubleshooting de conectividade.
 
 ---
 
 # ✅ Status do projeto
 
-Concluído
+Concluído.
