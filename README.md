@@ -1,15 +1,15 @@
 # 🖥️ TechStart Network Lab
 
 <div align="center">
-  
-  ![Cisco Packet Tracer](https://img.shields.io/badge/Cisco_Packet_Tracer-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white)
-  ![Networking](https://img.shields.io/badge/Networking-0073E6?style=for-the-badge&logo=network&logoColor=white)
-  ![VLAN](https://img.shields.io/badge/VLAN-0052CC?style=for-the-badge&logo=cisco&logoColor=white)
-  ![DHCP](https://img.shields.io/badge/DHCP-FF6B00?style=for-the-badge&logo=dhcp&logoColor=white)
-  
-  <img src="https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Versão-1.0-blue?style=for-the-badge" />
-  
+
+![Cisco Packet Tracer](https://img.shields.io/badge/Cisco_Packet_Tracer-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white)
+![Networking](https://img.shields.io/badge/Networking-0073E6?style=for-the-badge&logo=network&logoColor=white)
+![VLAN](https://img.shields.io/badge/VLAN-0052CC?style=for-the-badge&logo=cisco&logoColor=white)
+![DHCP](https://img.shields.io/badge/DHCP-FF6B00?style=for-the-badge&logo=dhcp&logoColor=white)
+
+<img src="https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Versão-1.0-blue?style=for-the-badge" />
+
 </div>
 
 ---
@@ -20,93 +20,89 @@ Projeto de infraestrutura de rede corporativa desenvolvido utilizando o **Cisco 
 
 O cenário representa a empresa fictícia **TechStart**, que precisava melhorar sua organização de rede através da separação dos departamentos, controle de endereçamento IP e comunicação eficiente entre os dispositivos.
 
-Durante o laboratório foram aplicados conceitos fundamentais de redes, como **VLANs, Trunk, VLSM, Router-on-a-Stick e DHCP**.
+Foram aplicados conceitos fundamentais de redes como **VLANs, Trunk, VLSM, Router-on-a-Stick e DHCP**.
 
 ---
 
 <div align="center">
-  
-  ## 🎯 Objetivos do projeto
-  
+
+## 🎯 Objetivos do projeto
+
 </div>
 
 - Separar departamentos utilizando VLANs.
-- Melhorar a organização da rede através de subnetting.
+- Organizar o endereçamento IP utilizando VLSM.
 - Permitir comunicação entre diferentes VLANs.
-- Automatizar a configuração dos computadores utilizando DHCP.
-- Validar o funcionamento através de testes de conectividade.
+- Automatizar a configuração dos dispositivos através do DHCP.
+- Validar o funcionamento da rede através de testes de conectividade.
 
 ---
 
 <div align="center">
-  
-  ## 🛠️ Ferramenta utilizada
-  
+
+## 🛠️ Ferramenta utilizada
+
 </div>
 
-- **Cisco Packet Tracer** - Simulador de redes da Cisco Systems
+- Cisco Packet Tracer
 
 ---
 
 <div align="center">
-  
-  ## 🌐 Conceitos aplicados
-  
-</div>
 
----
+## 🌐 Conceitos aplicados
+
+</div>
 
 ### VLAN (Virtual Local Area Network)
 
 VLANs permitem dividir uma rede física em redes lógicas independentes.
 
-Neste projeto, cada departamento recebeu uma VLAN própria, reduzindo o tráfego de broadcast e melhorando a organização da infraestrutura.
+Neste projeto, cada departamento recebeu uma VLAN própria, melhorando a organização e reduzindo o tráfego de broadcast.
 
-Exemplo:
-
-- **VLAN 10** → Financeiro
-- **VLAN 20** → TI
-- **VLAN 30** → RH
-- **VLAN 40** → Diretoria
+| VLAN | Departamento |
+|---|---|
+| VLAN 10 | Financeiro |
+| VLAN 20 | TI |
+| VLAN 30 | RH |
+| VLAN 40 | Diretoria |
 
 ---
 
 ### Trunk (802.1Q)
 
-O Trunk é utilizado para transportar várias VLANs através de um único link entre equipamentos de rede.
+O Trunk permite transportar múltiplas VLANs através de um único link entre equipamentos de rede.
 
-Neste projeto, os links Trunk foram configurados entre os switches e o roteador para permitir que todas as VLANs fossem transmitidas pela infraestrutura.
+Foi utilizado para permitir que os switches e o roteador trocassem informações de todas as VLANs.
 
 ---
 
 ### VLSM (Variable Length Subnet Mask)
 
-O VLSM permite dividir uma rede IP em sub-redes de tamanhos diferentes, aproveitando melhor os endereços disponíveis.
+O VLSM permite criar sub-redes de tamanhos diferentes conforme a necessidade de cada departamento, evitando desperdício de endereços IP.
 
-A rede inicial utilizada foi:
+Rede inicial:
 
 ```
 192.168.1.0/24
 ```
 
-Ela foi dividida conforme a quantidade de dispositivos de cada departamento.
+Planejamento:
+
+| VLAN | Rede | Máscara | Gateway |
+|---|---|---|---|
+| VLAN 10 | 192.168.1.0/26 | 255.255.255.192 | 192.168.1.1 |
+| VLAN 20 | 192.168.1.64/27 | 255.255.255.224 | 192.168.1.65 |
+| VLAN 30 | 192.168.1.96/28 | 255.255.255.240 | 192.168.1.97 |
+| VLAN 40 | 192.168.1.112/28 | 255.255.255.240 | 192.168.1.113 |
 
 ---
 
 ### Router-on-a-Stick
 
-O Router-on-a-Stick permite que um único roteador faça o roteamento entre várias VLANs utilizando subinterfaces.
+O Router-on-a-Stick permite que um único roteador realize a comunicação entre VLANs utilizando subinterfaces.
 
 Cada subinterface representa o gateway de uma VLAN.
-
-Exemplo:
-
-```
-VLAN 10 → 192.168.1.1
-VLAN 20 → 192.168.1.65
-VLAN 30 → 192.168.1.97
-VLAN 40 → 192.168.1.113
-```
 
 ---
 
@@ -119,18 +115,18 @@ O DHCP permite que os computadores recebam automaticamente:
 - Gateway.
 - Configurações necessárias para comunicação.
 
-Neste projeto, o próprio roteador foi configurado como servidor DHCP.
+Neste projeto, o roteador foi configurado como servidor DHCP.
 
 ---
 
 <div align="center">
-  
-  ## 🏢 Estrutura da rede
-  
+
+## 🏢 Estrutura da rede
+
 </div>
 
 | VLAN | Departamento | Quantidade de hosts |
-|------|--------------|---------------------|
+|---|---|---|
 | VLAN 10 | Financeiro | 50 |
 | VLAN 20 | TI | 20 |
 | VLAN 30 | RH | 10 |
@@ -139,9 +135,9 @@ Neste projeto, o próprio roteador foi configurado como servidor DHCP.
 ---
 
 <div align="center">
-  
-  ## 📡 Topologia da rede
-  
+
+## 📡 Topologia da rede
+
 </div>
 
 ![Topologia da rede](screenshots/topology.png)
@@ -149,27 +145,10 @@ Neste projeto, o próprio roteador foi configurado como servidor DHCP.
 ---
 
 <div align="center">
-  
-  ## 🌐 Planejamento IP (VLSM)
-  
+
+## ⚙️ Configurações realizadas
+
 </div>
-
-| VLAN | Rede | Máscara | Gateway |
-|------|------|---------|---------|
-| VLAN 10 | 192.168.1.0/26 | 255.255.255.192 | 192.168.1.1 |
-| VLAN 20 | 192.168.1.64/27 | 255.255.255.224 | 192.168.1.65 |
-| VLAN 30 | 192.168.1.96/28 | 255.255.255.240 | 192.168.1.97 |
-| VLAN 40 | 192.168.1.112/28 | 255.255.255.240 | 192.168.1.113 |
-
----
-
-<div align="center">
-  
-  ## ⚙️ Configurações realizadas
-  
-</div>
-
----
 
 ### 1. Criação das VLANs
 
@@ -210,7 +189,7 @@ Resultado:
 
 ### 2. Configuração dos links Trunk
 
-Os links Trunk permitem o transporte das VLANs entre os equipamentos.
+Os links Trunk foram configurados para permitir a passagem das VLANs entre os equipamentos.
 
 Comando utilizado:
 
@@ -236,7 +215,7 @@ Resultado:
 
 Foram criadas subinterfaces no roteador para cada VLAN.
 
-Exemplo:
+#### VLAN 10
 
 ```bash
 interface gigabitEthernet 0/0.10
@@ -246,21 +225,33 @@ encapsulation dot1Q 10
 ip address 192.168.1.1 255.255.255.192
 ```
 
-Outras VLANs:
+#### VLAN 20
 
 ```bash
 interface gigabitEthernet 0/0.20
+
 encapsulation dot1Q 20
+
 ip address 192.168.1.65 255.255.255.224
+```
 
+#### VLAN 30
 
+```bash
 interface gigabitEthernet 0/0.30
+
 encapsulation dot1Q 30
+
 ip address 192.168.1.97 255.255.255.240
+```
 
+#### VLAN 40
 
+```bash
 interface gigabitEthernet 0/0.40
+
 encapsulation dot1Q 40
+
 ip address 192.168.1.113 255.255.255.240
 ```
 
@@ -278,9 +269,9 @@ Resultado:
 
 ### 4. Configuração DHCP
 
-Criação dos pools DHCP para cada VLAN.
+O roteador foi configurado como servidor DHCP para distribuir IPs automaticamente.
 
-Exemplo:
+#### Pool Financeiro
 
 ```bash
 ip dhcp pool FINANCEIRO
@@ -290,15 +281,45 @@ network 192.168.1.0 255.255.255.192
 default-router 192.168.1.1
 ```
 
+#### Pool TI
+
+```bash
+ip dhcp pool TI
+
+network 192.168.1.64 255.255.255.224
+
+default-router 192.168.1.65
+```
+
+#### Pool RH
+
+```bash
+ip dhcp pool RH
+
+network 192.168.1.96 255.255.255.240
+
+default-router 192.168.1.97
+```
+
+#### Pool Diretoria
+
+```bash
+ip dhcp pool DIRETORIA
+
+network 192.168.1.112 255.255.255.240
+
+default-router 192.168.1.113
+```
+
 Verificação dos pools:
 
 ```bash
 show ip dhcp pool
 ```
 
-![Pools DHCP](screenshots/dhcp-pools.png)
+![DHCP Pools](screenshots/dhcp-pools.png)
 
-Verificação dos IPs distribuídos:
+Verificação dos IPs entregues:
 
 ```bash
 show ip dhcp binding
@@ -309,9 +330,9 @@ show ip dhcp binding
 ---
 
 <div align="center">
-  
-  ## 🧪 Testes de conectividade
-  
+
+## 🧪 Testes de conectividade
+
 </div>
 
 Foram realizados testes utilizando o comando:
@@ -339,36 +360,44 @@ Resultado:
 ---
 
 <div align="center">
-  
-  ## 📚 Conhecimentos desenvolvidos
-  
+
+## 📚 Conhecimentos desenvolvidos
+
 </div>
 
 Durante o projeto foram praticados:
 
-- ✅ Configuração de switches Cisco.
+- ✅ Configuração de equipamentos Cisco.
 - ✅ Criação e gerenciamento de VLANs.
 - ✅ Configuração de links Trunk.
-- ✅ Planejamento de endereçamento IPv4.
-- ✅ Subnetting utilizando VLSM.
-- ✅ Comunicação entre redes utilizando roteamento.
+- ✅ Endereçamento IPv4.
+- ✅ Subnetting e VLSM.
+- ✅ Roteamento entre VLANs.
 - ✅ Configuração de DHCP.
-- ✅ Testes e troubleshooting de conectividade.
+- ✅ Troubleshooting utilizando comandos Cisco.
 
 ---
 
 <div align="center">
-  
-  ## ✅ Status do projeto
-  
+
+## ✅ Status do projeto
+
 </div>
 
 <div align="center">
-  
-  ### 🟢 Concluído
-  
-  ---
-  
-  <sub>Desenvolvido com ❤️ para o aprendizado de redes</sub>
-  
+
+### 🟢 Concluído
+
+---
+
+## 👨‍💻 Autor
+
+**Pablo Gonçalves Santos**
+
+Estudante de Segurança Cibernética com foco em Redes e Cibersegurança.
+
+---
+
+<sub>Desenvolvido com ❤️ para o aprendizado de redes</sub>
+
 </div>
