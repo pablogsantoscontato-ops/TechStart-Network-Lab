@@ -1,4 +1,19 @@
+```markdown
 # 🖥️ TechStart Network Lab
+
+<div align="center">
+  
+  ![Cisco Packet Tracer](https://img.shields.io/badge/Cisco_Packet_Tracer-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white)
+  ![Networking](https://img.shields.io/badge/Networking-0073E6?style=for-the-badge&logo=network&logoColor=white)
+  ![VLAN](https://img.shields.io/badge/VLAN-0052CC?style=for-the-badge&logo=cisco&logoColor=white)
+  ![DHCP](https://img.shields.io/badge/DHCP-FF6B00?style=for-the-badge&logo=dhcp&logoColor=white)
+  
+  <img src="https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Versão-1.0-blue?style=for-the-badge" />
+  
+</div>
+
+---
 
 ## 📌 Sobre o projeto
 
@@ -10,7 +25,11 @@ Durante o laboratório foram aplicados conceitos fundamentais de redes, como **V
 
 ---
 
-# 🎯 Objetivos do projeto
+<div align="center">
+  
+  ## 🎯 Objetivos do projeto
+  
+</div>
 
 - Separar departamentos utilizando VLANs.
 - Melhorar a organização da rede através de subnetting.
@@ -20,15 +39,23 @@ Durante o laboratório foram aplicados conceitos fundamentais de redes, como **V
 
 ---
 
-# 🛠️ Ferramenta utilizada
+<div align="center">
+  
+  ## 🛠️ Ferramenta utilizada
+  
+</div>
 
-- Cisco Packet Tracer
+- **Cisco Packet Tracer** - Simulador de redes da Cisco Systems
 
 ---
 
-# 🌐 Conceitos aplicados
+<div align="center">
+  
+  ## 🌐 Conceitos aplicados
+  
+</div>
 
-## VLAN (Virtual Local Area Network)
+### VLAN (Virtual Local Area Network)
 
 VLANs permitem dividir uma rede física em redes lógicas independentes.
 
@@ -36,14 +63,14 @@ Neste projeto, cada departamento recebeu uma VLAN própria, reduzindo o tráfego
 
 Exemplo:
 
-- VLAN 10 → Financeiro
-- VLAN 20 → TI
-- VLAN 30 → RH
-- VLAN 40 → Diretoria
+- **VLAN 10** → Financeiro
+- **VLAN 20** → TI
+- **VLAN 30** → RH
+- **VLAN 40** → Diretoria
 
 ---
 
-## Trunk (802.1Q)
+### Trunk (802.1Q)
 
 O Trunk é utilizado para transportar várias VLANs através de um único link entre equipamentos de rede.
 
@@ -51,7 +78,7 @@ Neste projeto, os links Trunk foram configurados entre os switches e o roteador 
 
 ---
 
-## VLSM (Variable Length Subnet Mask)
+### VLSM (Variable Length Subnet Mask)
 
 O VLSM permite dividir uma rede IP em sub-redes de tamanhos diferentes, aproveitando melhor os endereços disponíveis.
 
@@ -65,7 +92,7 @@ Ela foi dividida conforme a quantidade de dispositivos de cada departamento.
 
 ---
 
-## Router-on-a-Stick
+### Router-on-a-Stick
 
 O Router-on-a-Stick permite que um único roteador faça o roteamento entre várias VLANs utilizando subinterfaces.
 
@@ -82,7 +109,7 @@ VLAN 40 → 192.168.1.113
 
 ---
 
-## DHCP (Dynamic Host Configuration Protocol)
+### DHCP (Dynamic Host Configuration Protocol)
 
 O DHCP permite que os computadores recebam automaticamente:
 
@@ -95,10 +122,14 @@ Neste projeto, o próprio roteador foi configurado como servidor DHCP.
 
 ---
 
-# 🏢 Estrutura da rede
+<div align="center">
+  
+  ## 🏢 Estrutura da rede
+  
+</div>
 
 | VLAN | Departamento | Quantidade de hosts |
-|---|---|---|
+|------|--------------|---------------------|
 | VLAN 10 | Financeiro | 50 |
 | VLAN 20 | TI | 20 |
 | VLAN 30 | RH | 10 |
@@ -106,16 +137,24 @@ Neste projeto, o próprio roteador foi configurado como servidor DHCP.
 
 ---
 
-# 📡 Topologia da rede
+<div align="center">
+  
+  ## 📡 Topologia da rede
+  
+</div>
 
 ![Topologia da rede](screenshots/topology.png)
 
 ---
 
-# 🌐 Planejamento IP (VLSM)
+<div align="center">
+  
+  ## 🌐 Planejamento IP (VLSM)
+  
+</div>
 
 | VLAN | Rede | Máscara | Gateway |
-|---|---|---|---|
+|------|------|---------|---------|
 | VLAN 10 | 192.168.1.0/26 | 255.255.255.192 | 192.168.1.1 |
 | VLAN 20 | 192.168.1.64/27 | 255.255.255.224 | 192.168.1.65 |
 | VLAN 30 | 192.168.1.96/28 | 255.255.255.240 | 192.168.1.97 |
@@ -123,9 +162,13 @@ Neste projeto, o próprio roteador foi configurado como servidor DHCP.
 
 ---
 
-# ⚙️ Configurações realizadas
+<div align="center">
+  
+  ## ⚙️ Configurações realizadas
+  
+</div>
 
-## 1. Criação das VLANs
+### 1. Criação das VLANs
 
 As VLANs foram criadas nos switches para separar os departamentos.
 
@@ -162,7 +205,7 @@ Resultado:
 
 ---
 
-# 2. Configuração dos links Trunk
+### 2. Configuração dos links Trunk
 
 Os links Trunk permitem o transporte das VLANs entre os equipamentos.
 
@@ -186,7 +229,7 @@ Resultado:
 
 ---
 
-# 3. Configuração do Router-on-a-Stick
+### 3. Configuração do Router-on-a-Stick
 
 Foram criadas subinterfaces no roteador para cada VLAN.
 
@@ -230,7 +273,7 @@ Resultado:
 
 ---
 
-# 4. Configuração DHCP
+### 4. Configuração DHCP
 
 Criação dos pools DHCP para cada VLAN.
 
@@ -262,7 +305,11 @@ show ip dhcp binding
 
 ---
 
-# 🧪 Testes de conectividade
+<div align="center">
+  
+  ## 🧪 Testes de conectividade
+  
+</div>
 
 Foram realizados testes utilizando o comando:
 
@@ -288,21 +335,38 @@ Resultado:
 
 ---
 
-# 📚 Conhecimentos desenvolvidos
+<div align="center">
+  
+  ## 📚 Conhecimentos desenvolvidos
+  
+</div>
 
 Durante o projeto foram praticados:
 
-- Configuração de switches Cisco.
-- Criação e gerenciamento de VLANs.
-- Configuração de links Trunk.
-- Planejamento de endereçamento IPv4.
-- Subnetting utilizando VLSM.
-- Comunicação entre redes utilizando roteamento.
-- Configuração de DHCP.
-- Testes e troubleshooting de conectividade.
+- ✅ Configuração de switches Cisco.
+- ✅ Criação e gerenciamento de VLANs.
+- ✅ Configuração de links Trunk.
+- ✅ Planejamento de endereçamento IPv4.
+- ✅ Subnetting utilizando VLSM.
+- ✅ Comunicação entre redes utilizando roteamento.
+- ✅ Configuração de DHCP.
+- ✅ Testes e troubleshooting de conectividade.
 
 ---
 
-# ✅ Status do projeto
+<div align="center">
+  
+  ## ✅ Status do projeto
+  
+</div>
 
-Concluído.
+<div align="center">
+  
+  ### 🟢 Concluído
+  
+  ---
+  
+  <sub>Desenvolvido com ❤️ para o aprendizado de redes</sub>
+  
+</div>
+```
