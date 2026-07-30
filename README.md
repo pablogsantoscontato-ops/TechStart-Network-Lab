@@ -1,5 +1,3 @@
-Aqui está o código completo do README.md sem a caixa de texto de código:
-
 # 🖥️ TechStart Network Lab
 
 <div align="center">
