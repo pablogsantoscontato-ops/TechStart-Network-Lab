@@ -333,39 +333,51 @@ show ip dhcp binding
 
 ---
 
+<div align="center">
+
 ## ⌨️ Principais comandos Cisco utilizados
+
+</div>
+
+---
 
 ### 🔹 Comandos básicos do Cisco IOS
 
 Comandos utilizados para acessar os modos de configuração dos equipamentos.
 
-**enable**
+**`enable`**
 
 Entra no modo privilegiado do equipamento, permitindo executar comandos administrativos.
 
 Exemplo:
 
+```bash
 enable
+```
 
 ---
 
-**configure terminal**
+**`configure terminal`**
 
 Acessa o modo de configuração global, onde são realizadas alterações no equipamento.
 
 Exemplo:
 
+```bash
 configure terminal
+```
 
 ---
 
-**hostname**
+**`hostname`**
 
 Altera o nome do equipamento para facilitar sua identificação na rede.
 
 Exemplo:
 
+```bash
 hostname R1
+```
 
 ---
 
@@ -373,41 +385,47 @@ hostname R1
 
 Comandos utilizados para criar, nomear e verificar as VLANs responsáveis pela separação dos departamentos.
 
-**vlan**
+**`vlan`**
 
 Cria uma VLAN no switch.
 
 Exemplo:
 
+```bash
 vlan 10
+```
 
 Neste projeto:
 
-- VLAN 10 → Financeiro
-- VLAN 20 → TI
-- VLAN 30 → RH
-- VLAN 40 → Diretoria
+* VLAN 10 → Financeiro
+* VLAN 20 → TI
+* VLAN 30 → RH
+* VLAN 40 → Diretoria
 
 ---
 
-**name**
+**`name`**
 
 Define um nome para a VLAN criada.
 
 Exemplo:
 
+```bash
 vlan 10
 name FINANCEIRO
+```
 
 ---
 
-**show vlan brief**
+**`show vlan brief`**
 
 Exibe as VLANs existentes no switch e suas portas associadas.
 
 Exemplo:
 
+```bash
 show vlan brief
+```
 
 Utilizado para verificar se as VLANs foram criadas corretamente.
 
@@ -417,33 +435,39 @@ Utilizado para verificar se as VLANs foram criadas corretamente.
 
 Comandos utilizados para definir o funcionamento das interfaces do switch.
 
-**interface**
+**`interface`**
 
 Seleciona uma interface específica para configuração.
 
 Exemplo:
 
+```bash
 interface fastEthernet 0/1
+```
 
 ---
 
-**switchport mode access**
+**`switchport mode access`**
 
 Configura uma porta como access, utilizada para conectar dispositivos finais.
 
 Exemplo:
 
+```bash
 switchport mode access
+```
 
 ---
 
-**switchport access vlan**
+**`switchport access vlan`**
 
 Associa uma porta específica a uma VLAN.
 
 Exemplo:
 
+```bash
 switchport access vlan 10
+```
 
 O dispositivo conectado nessa porta fará parte da VLAN 10.
 
@@ -453,24 +477,28 @@ O dispositivo conectado nessa porta fará parte da VLAN 10.
 
 Comandos utilizados para permitir o transporte de múltiplas VLANs entre equipamentos de rede.
 
-**switchport mode trunk**
+**`switchport mode trunk`**
 
 Configura uma interface para operar como trunk.
 
 Exemplo:
 
+```bash
 interface fastEthernet 0/10
 switchport mode trunk
+```
 
 ---
 
-**show interfaces trunk**
+**`show interfaces trunk`**
 
 Mostra as interfaces configuradas como trunk e as VLANs permitidas.
 
 Exemplo:
 
+```bash
 show interfaces trunk
+```
 
 ---
 
@@ -478,43 +506,51 @@ show interfaces trunk
 
 Comandos utilizados para configurar o roteamento entre VLANs através do roteador.
 
-**interface gigabitEthernet**
+**`interface gigabitEthernet`**
 
 Seleciona uma interface do roteador ou uma subinterface.
 
 Exemplo:
 
+```bash
 interface gigabitEthernet 0/0.10
+```
 
 ---
 
-**encapsulation dot1Q**
+**`encapsulation dot1Q`**
 
 Associa uma subinterface a uma VLAN utilizando o protocolo 802.1Q.
 
 Exemplo:
 
+```bash
 encapsulation dot1Q 10
+```
 
 ---
 
-**ip address**
+**`ip address`**
 
 Configura o endereço IP da interface, utilizado como gateway da VLAN.
 
 Exemplo:
 
+```bash
 ip address 192.168.1.1 255.255.255.192
+```
 
 ---
 
-**show ip interface brief**
+**`show ip interface brief`**
 
 Exibe as interfaces do roteador, seus endereços IP e status.
 
 Exemplo:
 
+```bash
 show ip interface brief
+```
 
 ---
 
@@ -522,43 +558,51 @@ show ip interface brief
 
 Comandos utilizados para configurar o roteador como servidor DHCP.
 
-**ip dhcp pool**
+**`ip dhcp pool`**
 
 Cria um pool de endereços IP para distribuição automática.
 
 Exemplo:
 
+```bash
 ip dhcp pool FINANCEIRO
+```
 
 ---
 
-**network**
+**`network`**
 
 Define a rede que será distribuída pelo DHCP.
 
 Exemplo:
 
+```bash
 network 192.168.1.0 255.255.255.192
+```
 
 ---
 
-**default-router**
+**`default-router`**
 
 Define o gateway que será entregue aos dispositivos.
 
 Exemplo:
 
+```bash
 default-router 192.168.1.1
+```
 
 ---
 
-**show ip dhcp binding**
+**`show ip dhcp binding`**
 
 Mostra os endereços IP entregues pelo servidor DHCP.
 
 Exemplo:
 
+```bash
 show ip dhcp binding
+```
 
 ---
 
@@ -566,47 +610,57 @@ show ip dhcp binding
 
 Comandos utilizados para validar o funcionamento da rede e analisar possíveis problemas.
 
-**ping**
+**`ping`**
 
 Testa a comunicação entre dispositivos utilizando ICMP.
 
 Exemplo:
 
+```bash
 ping 192.168.1.65
+```
 
 ---
 
-**show running-config**
+**`show running-config`**
 
 Exibe a configuração atual do equipamento.
 
 Exemplo:
 
+```bash
 show running-config
+```
 
 ---
 
-**copy running-config startup-config**
+**`copy running-config startup-config`**
 
 Salva as configurações atuais para que elas permaneçam após reiniciar o equipamento.
 
 Exemplo:
 
+```bash
 copy running-config startup-config
+```
 
 ---
 
-### 📋 Resumo dos comandos
+<div align="center">
+
+## 📋 Resumo dos comandos
+
+</div>
 
 | Comando | Função |
 |---------|--------|
-| show vlan brief | Verificar VLANs configuradas |
-| show interfaces trunk | Verificar links trunk |
-| show ip interface brief | Verificar interfaces IP |
-| show ip dhcp binding | Verificar IPs entregues pelo DHCP |
-| ping | Testar conectividade |
-| show running-config | Visualizar configurações atuais |
-| copy running-config startup-config | Salvar configurações |
+| `show vlan brief` | Verificar VLANs configuradas |
+| `show interfaces trunk` | Verificar links trunk |
+| `show ip interface brief` | Verificar interfaces IP |
+| `show ip dhcp binding` | Verificar IPs entregues pelo DHCP |
+| `ping` | Testar conectividade |
+| `show running-config` | Visualizar configurações atuais |
+| `copy running-config startup-config` | Salvar configurações |
 
 ## 🧪 Testes de conectividade
 
