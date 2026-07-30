@@ -331,6 +331,283 @@ show ip dhcp binding
 
 <div align="center">
 
+---
+
+## ⌨️ Principais comandos Cisco utilizados
+
+### 🔹 Comandos básicos do Cisco IOS
+
+Comandos utilizados para acessar os modos de configuração dos equipamentos.
+
+**enable**
+
+Entra no modo privilegiado do equipamento, permitindo executar comandos administrativos.
+
+Exemplo:
+
+enable
+
+---
+
+**configure terminal**
+
+Acessa o modo de configuração global, onde são realizadas alterações no equipamento.
+
+Exemplo:
+
+configure terminal
+
+---
+
+**hostname**
+
+Altera o nome do equipamento para facilitar sua identificação na rede.
+
+Exemplo:
+
+hostname R1
+
+---
+
+### 🔹 Configuração de VLANs
+
+Comandos utilizados para criar, nomear e verificar as VLANs responsáveis pela separação dos departamentos.
+
+**vlan**
+
+Cria uma VLAN no switch.
+
+Exemplo:
+
+vlan 10
+
+Neste projeto:
+
+- VLAN 10 → Financeiro
+- VLAN 20 → TI
+- VLAN 30 → RH
+- VLAN 40 → Diretoria
+
+---
+
+**name**
+
+Define um nome para a VLAN criada.
+
+Exemplo:
+
+vlan 10
+name FINANCEIRO
+
+---
+
+**show vlan brief**
+
+Exibe as VLANs existentes no switch e suas portas associadas.
+
+Exemplo:
+
+show vlan brief
+
+Utilizado para verificar se as VLANs foram criadas corretamente.
+
+---
+
+### 🔹 Configuração das portas do switch
+
+Comandos utilizados para definir o funcionamento das interfaces do switch.
+
+**interface**
+
+Seleciona uma interface específica para configuração.
+
+Exemplo:
+
+interface fastEthernet 0/1
+
+---
+
+**switchport mode access**
+
+Configura uma porta como access, utilizada para conectar dispositivos finais.
+
+Exemplo:
+
+switchport mode access
+
+---
+
+**switchport access vlan**
+
+Associa uma porta específica a uma VLAN.
+
+Exemplo:
+
+switchport access vlan 10
+
+O dispositivo conectado nessa porta fará parte da VLAN 10.
+
+---
+
+### 🔹 Configuração de Trunk
+
+Comandos utilizados para permitir o transporte de múltiplas VLANs entre equipamentos de rede.
+
+**switchport mode trunk**
+
+Configura uma interface para operar como trunk.
+
+Exemplo:
+
+interface fastEthernet 0/10
+switchport mode trunk
+
+---
+
+**show interfaces trunk**
+
+Mostra as interfaces configuradas como trunk e as VLANs permitidas.
+
+Exemplo:
+
+show interfaces trunk
+
+---
+
+### 🔹 Router-on-a-Stick
+
+Comandos utilizados para configurar o roteamento entre VLANs através do roteador.
+
+**interface gigabitEthernet**
+
+Seleciona uma interface do roteador ou uma subinterface.
+
+Exemplo:
+
+interface gigabitEthernet 0/0.10
+
+---
+
+**encapsulation dot1Q**
+
+Associa uma subinterface a uma VLAN utilizando o protocolo 802.1Q.
+
+Exemplo:
+
+encapsulation dot1Q 10
+
+---
+
+**ip address**
+
+Configura o endereço IP da interface, utilizado como gateway da VLAN.
+
+Exemplo:
+
+ip address 192.168.1.1 255.255.255.192
+
+---
+
+**show ip interface brief**
+
+Exibe as interfaces do roteador, seus endereços IP e status.
+
+Exemplo:
+
+show ip interface brief
+
+---
+
+### 🔹 Configuração DHCP
+
+Comandos utilizados para configurar o roteador como servidor DHCP.
+
+**ip dhcp pool**
+
+Cria um pool de endereços IP para distribuição automática.
+
+Exemplo:
+
+ip dhcp pool FINANCEIRO
+
+---
+
+**network**
+
+Define a rede que será distribuída pelo DHCP.
+
+Exemplo:
+
+network 192.168.1.0 255.255.255.192
+
+---
+
+**default-router**
+
+Define o gateway que será entregue aos dispositivos.
+
+Exemplo:
+
+default-router 192.168.1.1
+
+---
+
+**show ip dhcp binding**
+
+Mostra os endereços IP entregues pelo servidor DHCP.
+
+Exemplo:
+
+show ip dhcp binding
+
+---
+
+### 🔹 Testes e troubleshooting
+
+Comandos utilizados para validar o funcionamento da rede e analisar possíveis problemas.
+
+**ping**
+
+Testa a comunicação entre dispositivos utilizando ICMP.
+
+Exemplo:
+
+ping 192.168.1.65
+
+---
+
+**show running-config**
+
+Exibe a configuração atual do equipamento.
+
+Exemplo:
+
+show running-config
+
+---
+
+**copy running-config startup-config**
+
+Salva as configurações atuais para que elas permaneçam após reiniciar o equipamento.
+
+Exemplo:
+
+copy running-config startup-config
+
+---
+
+### 📋 Resumo dos comandos
+
+| Comando | Função |
+|---------|--------|
+| show vlan brief | Verificar VLANs configuradas |
+| show interfaces trunk | Verificar links trunk |
+| show ip interface brief | Verificar interfaces IP |
+| show ip dhcp binding | Verificar IPs entregues pelo DHCP |
+| ping | Testar conectividade |
+| show running-config | Visualizar configurações atuais |
+| copy running-config startup-config | Salvar configurações |
+
 ## 🧪 Testes de conectividade
 
 </div>
