@@ -1,6 +1,6 @@
-# 🖥️ TechStart Network Lab
-
 <div align="center">
+
+# 🖥️ TechStart Network Lab
 
 ![Cisco Packet Tracer](https://img.shields.io/badge/Cisco_Packet_Tracer-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white)
 ![Networking](https://img.shields.io/badge/Networking-0073E6?style=for-the-badge&logo=network&logoColor=white)
@@ -87,12 +87,12 @@ Rede inicial:
 
 Planejamento:
 
-| VLAN | Rede | Máscara | Gateway |
-|---|---|---|---|
-| VLAN 10 | 192.168.1.0/26 | 255.255.255.192 | 192.168.1.1 |
-| VLAN 20 | 192.168.1.64/27 | 255.255.255.224 | 192.168.1.65 |
-| VLAN 30 | 192.168.1.96/28 | 255.255.255.240 | 192.168.1.97 |
-| VLAN 40 | 192.168.1.112/28 | 255.255.255.240 | 192.168.1.113 |
+| VLAN | Departamento | Rede | Máscara | CIDR | Gateway | Hosts Utilizáveis | Broadcast |
+|------|--------------|------|---------|------|---------|-------------------|-----------|
+| VLAN 10 | Financeiro | 192.168.1.0 | 255.255.255.192 | /26 | 192.168.1.1 | 192.168.1.1 - 192.168.1.62 | 192.168.1.63 |
+| VLAN 20 | TI | 192.168.1.64 | 255.255.255.224 | /27 | 192.168.1.65 | 192.168.1.65 - 192.168.1.94 | 192.168.1.95 |
+| VLAN 30 | RH | 192.168.1.96 | 255.255.255.240 | /28 | 192.168.1.97 | 192.168.1.97 - 192.168.1.110 | 192.168.1.111 |
+| VLAN 40 | Diretoria | 192.168.1.112 | 255.255.255.240 | /28 | 192.168.1.113 | 192.168.1.113 - 192.168.1.126 | 192.168.1.127 |
 
 ---
 
