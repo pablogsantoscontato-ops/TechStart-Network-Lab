@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🖥️ TechStart Network Lab
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:0A66C2,100:00C6FF&height=230&section=header&text=TechStart%20Network%20Lab&fontSize=46&fontColor=ffffff&fontAlignY=40&animation=fadeIn" width="100%"/>
 
 ![Cisco Packet Tracer](https://img.shields.io/badge/Cisco_Packet_Tracer-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white)
 ![Networking](https://img.shields.io/badge/Networking-0073E6?style=for-the-badge&logo=network&logoColor=white)
@@ -12,7 +12,7 @@
 
 </div>
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 📌 Sobre o projeto
 
@@ -22,13 +22,9 @@ O cenário representa a empresa fictícia **TechStart**, que precisava melhorar 
 
 Foram aplicados conceitos fundamentais de redes como **VLANs, Trunk, VLSM, Router-on-a-Stick e DHCP**.
 
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 🎯 Objetivos do projeto
-
-</div>
 
 - Separar departamentos utilizando VLANs.
 - Organizar o endereçamento IP utilizando VLSM.
@@ -36,23 +32,15 @@ Foram aplicados conceitos fundamentais de redes como **VLANs, Trunk, VLSM, Route
 - Automatizar a configuração dos dispositivos através do DHCP.
 - Validar o funcionamento da rede através de testes de conectividade.
 
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 🛠️ Ferramenta utilizada
 
-</div>
+<img src="https://img.shields.io/badge/Cisco_Packet_Tracer-0D1117?style=for-the-badge&logo=cisco&logoColor=00C6FF"/>
 
-- Cisco Packet Tracer
-
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 🌐 Conceitos aplicados
-
-</div>
 
 ### VLAN (Virtual Local Area Network)
 
@@ -60,8 +48,8 @@ VLANs permitem dividir uma rede física em redes lógicas independentes.
 
 Neste projeto, cada departamento recebeu uma VLAN própria, melhorando a organização e reduzindo o tráfego de broadcast.
 
-| VLAN | Departamento |
-|---|---|
+| 🧩 VLAN | 🏢 Departamento |
+|:--------|:----------------|
 | VLAN 10 | Financeiro |
 | VLAN 20 | TI |
 | VLAN 30 | RH |
@@ -83,12 +71,12 @@ O VLSM permite criar sub-redes de tamanhos diferentes conforme a necessidade de 
 
 Rede inicial:
 
-192.168.1.0/24
+`192.168.1.0/24`
 
 Planejamento:
 
-| VLAN | Departamento | Rede | Máscara | CIDR | Gateway | Hosts Utilizáveis | Broadcast |
-|------|--------------|------|---------|------|---------|-------------------|-----------|
+| 🧩 VLAN | 🏢 Departamento | 🌐 Rede | 🎭 Máscara | CIDR | 🚪 Gateway | 💻 Hosts Utilizáveis | 📣 Broadcast |
+|:--------|:----------------|:--------|:-----------|:-----|:-----------|:---------------------|:-------------|
 | VLAN 10 | Financeiro | 192.168.1.0 | 255.255.255.192 | /26 | 192.168.1.1 | 192.168.1.1 - 192.168.1.62 | 192.168.1.63 |
 | VLAN 20 | TI | 192.168.1.64 | 255.255.255.224 | /27 | 192.168.1.65 | 192.168.1.65 - 192.168.1.94 | 192.168.1.95 |
 | VLAN 30 | RH | 192.168.1.96 | 255.255.255.240 | /28 | 192.168.1.97 | 192.168.1.97 - 192.168.1.110 | 192.168.1.111 |
@@ -115,38 +103,26 @@ O DHCP permite que os computadores recebam automaticamente:
 
 Neste projeto, o roteador foi configurado como servidor DHCP.
 
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 🏢 Estrutura da rede
 
-</div>
-
-| VLAN | Departamento | Quantidade de hosts |
-|---|---|---|
+| 🧩 VLAN | 🏢 Departamento | 💻 Quantidade de hosts |
+|:--------|:----------------|:-----------------------|
 | VLAN 10 | Financeiro | 50 |
 | VLAN 20 | TI | 20 |
 | VLAN 30 | RH | 10 |
 | VLAN 40 | Diretoria | 5 |
 
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 📡 Topologia da rede
 
-</div>
-
 ![Topologia da rede](screenshots/topology.png)
 
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## ⚙️ Configurações realizadas
-
-</div>
 
 ### 1. Criação das VLANs
 
@@ -154,6 +130,7 @@ As VLANs foram criadas nos switches para separar os departamentos.
 
 Comandos utilizados:
 
+```text
 enable
 configure terminal
 
@@ -170,10 +147,13 @@ vlan 40
 name DIRETORIA
 
 end
+```
 
 Verificação:
 
+```text
 show vlan brief
+```
 
 Resultado:
 
@@ -187,13 +167,17 @@ Os links Trunk foram configurados para permitir a passagem das VLANs entre os eq
 
 Comando utilizado:
 
+```text
 interface fastEthernet 0/10
 
 switchport mode trunk
+```
 
 Verificação:
 
+```text
 show interfaces trunk
+```
 
 Resultado:
 
@@ -207,39 +191,49 @@ Foram criadas subinterfaces no roteador para cada VLAN.
 
 #### VLAN 10
 
+```text
 interface gigabitEthernet 0/0.10
 
 encapsulation dot1Q 10
 
 ip address 192.168.1.1 255.255.255.192
+```
 
 #### VLAN 20
 
+```text
 interface gigabitEthernet 0/0.20
 
 encapsulation dot1Q 20
 
 ip address 192.168.1.65 255.255.255.224
+```
 
 #### VLAN 30
 
+```text
 interface gigabitEthernet 0/0.30
 
 encapsulation dot1Q 30
 
 ip address 192.168.1.97 255.255.255.240
+```
 
 #### VLAN 40
 
+```text
 interface gigabitEthernet 0/0.40
 
 encapsulation dot1Q 40
 
 ip address 192.168.1.113 255.255.255.240
+```
 
 Verificação:
 
+```text
 show ip interface brief
+```
 
 Resultado:
 
@@ -253,81 +247,89 @@ O roteador foi configurado como servidor DHCP para distribuir IPs automaticament
 
 #### Pool Financeiro
 
+```text
 ip dhcp pool FINANCEIRO
 
 network 192.168.1.0 255.255.255.192
 
 default-router 192.168.1.1
+```
 
 #### Pool TI
 
+```text
 ip dhcp pool TI
 
 network 192.168.1.64 255.255.255.224
 
 default-router 192.168.1.65
+```
 
 #### Pool RH
 
+```text
 ip dhcp pool RH
 
 network 192.168.1.96 255.255.255.240
 
 default-router 192.168.1.97
+```
 
 #### Pool Diretoria
 
+```text
 ip dhcp pool DIRETORIA
 
 network 192.168.1.112 255.255.255.240
 
 default-router 192.168.1.113
+```
 
 Verificação dos pools:
 
+```text
 show ip dhcp pool
+```
 
 ![DHCP Pools](screenshots/dhcp-pools.png)
 
 Verificação dos IPs entregues:
 
+```text
 show ip dhcp binding
+```
 
 ![DHCP Bindings](screenshots/dhcp-bindings.png)
 
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 🧪 Testes de conectividade
 
-</div>
-
 Foram realizados testes utilizando o comando:
 
+```text
 ping
+```
 
 Exemplo:
 
+```text
 ping 192.168.1.65
+```
 
 Teste entre VLANs:
 
+```text
 ping 192.168.1.1
+```
 
 Resultado:
 
 ![Testes de conectividade](screenshots/ping-tests.png)
 
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## ⌨️ Principais comandos Cisco utilizados
-
-</div>
-
----
 
 ### 🔹 Comandos básicos do Cisco IOS
 
@@ -339,7 +341,9 @@ Entra no modo privilegiado do equipamento, permitindo executar comandos administ
 
 Exemplo:
 
+```text
 enable
+```
 
 ---
 
@@ -349,7 +353,9 @@ Acessa o modo de configuração global, onde são realizadas alterações no equ
 
 Exemplo:
 
+```text
 configure terminal
+```
 
 ---
 
@@ -359,7 +365,9 @@ Altera o nome do equipamento para facilitar sua identificação na rede.
 
 Exemplo:
 
+```text
 hostname R1
+```
 
 ---
 
@@ -373,7 +381,9 @@ Cria uma VLAN no switch.
 
 Exemplo:
 
+```text
 vlan 10
+```
 
 Neste projeto:
 
@@ -390,8 +400,10 @@ Define um nome para a VLAN criada.
 
 Exemplo:
 
+```text
 vlan 10
 name FINANCEIRO
+```
 
 ---
 
@@ -401,7 +413,9 @@ Exibe as VLANs existentes no switch e suas portas associadas.
 
 Exemplo:
 
+```text
 show vlan brief
+```
 
 Utilizado para verificar se as VLANs foram criadas corretamente.
 
@@ -417,7 +431,9 @@ Seleciona uma interface específica para configuração.
 
 Exemplo:
 
+```text
 interface fastEthernet 0/1
+```
 
 ---
 
@@ -427,7 +443,9 @@ Configura uma porta como access, utilizada para conectar dispositivos finais.
 
 Exemplo:
 
+```text
 switchport mode access
+```
 
 ---
 
@@ -437,7 +455,9 @@ Associa uma porta específica a uma VLAN.
 
 Exemplo:
 
+```text
 switchport access vlan 10
+```
 
 O dispositivo conectado nessa porta fará parte da VLAN 10.
 
@@ -453,8 +473,10 @@ Configura uma interface para operar como trunk.
 
 Exemplo:
 
+```text
 interface fastEthernet 0/10
 switchport mode trunk
+```
 
 ---
 
@@ -464,7 +486,9 @@ Mostra as interfaces configuradas como trunk e as VLANs permitidas.
 
 Exemplo:
 
+```text
 show interfaces trunk
+```
 
 ---
 
@@ -478,7 +502,9 @@ Seleciona uma interface do roteador ou uma subinterface.
 
 Exemplo:
 
+```text
 interface gigabitEthernet 0/0.10
+```
 
 ---
 
@@ -488,7 +514,9 @@ Associa uma subinterface a uma VLAN utilizando o protocolo 802.1Q.
 
 Exemplo:
 
+```text
 encapsulation dot1Q 10
+```
 
 ---
 
@@ -498,7 +526,9 @@ Configura o endereço IP da interface, utilizado como gateway da VLAN.
 
 Exemplo:
 
+```text
 ip address 192.168.1.1 255.255.255.192
+```
 
 ---
 
@@ -508,7 +538,9 @@ Exibe as interfaces do roteador, seus endereços IP e status.
 
 Exemplo:
 
+```text
 show ip interface brief
+```
 
 ---
 
@@ -522,7 +554,9 @@ Cria um pool de endereços IP para distribuição automática.
 
 Exemplo:
 
+```text
 ip dhcp pool FINANCEIRO
+```
 
 ---
 
@@ -532,7 +566,9 @@ Define a rede que será distribuída pelo DHCP.
 
 Exemplo:
 
+```text
 network 192.168.1.0 255.255.255.192
+```
 
 ---
 
@@ -542,7 +578,9 @@ Define o gateway que será entregue aos dispositivos.
 
 Exemplo:
 
+```text
 default-router 192.168.1.1
+```
 
 ---
 
@@ -552,7 +590,9 @@ Mostra os endereços IP entregues pelo servidor DHCP.
 
 Exemplo:
 
+```text
 show ip dhcp binding
+```
 
 ---
 
@@ -566,7 +606,9 @@ Testa a comunicação entre dispositivos utilizando ICMP.
 
 Exemplo:
 
+```text
 ping 192.168.1.65
+```
 
 ---
 
@@ -576,7 +618,9 @@ Exibe a configuração atual do equipamento.
 
 Exemplo:
 
+```text
 show running-config
+```
 
 ---
 
@@ -586,33 +630,27 @@ Salva as configurações atuais para que elas permaneçam após reiniciar o equi
 
 Exemplo:
 
+```text
 copy running-config startup-config
+```
 
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 📋 Resumo dos comandos
 
-</div>
+| ⌨️ Comando | 📖 Função |
+|:-----------|:----------|
+| `show vlan brief` | Verificar VLANs configuradas |
+| `show interfaces trunk` | Verificar links trunk |
+| `show ip interface brief` | Verificar interfaces IP |
+| `show ip dhcp binding` | Verificar IPs entregues pelo DHCP |
+| `ping` | Testar conectividade |
+| `show running-config` | Visualizar configurações atuais |
+| `copy running-config startup-config` | Salvar configurações |
 
-| Comando | Função |
-|---------|--------|
-| show vlan brief | Verificar VLANs configuradas |
-| show interfaces trunk | Verificar links trunk |
-| show ip interface brief | Verificar interfaces IP |
-| show ip dhcp binding | Verificar IPs entregues pelo DHCP |
-| ping | Testar conectividade |
-| show running-config | Visualizar configurações atuais |
-| copy running-config startup-config | Salvar configurações |
-
----
-
-<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 📚 Conhecimentos desenvolvidos
-
-</div>
 
 Durante o projeto foram praticados:
 
@@ -625,19 +663,15 @@ Durante o projeto foram praticados:
 - ✅ Configuração de DHCP.
 - ✅ Troubleshooting utilizando comandos Cisco.
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 <div align="center">
 
 ## ✅ Status do projeto
 
-</div>
-
-<div align="center">
-
 ### 🟢 Concluído
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0A66C2,100:00C6FF&height=2" width="100%"/>
 
 ## 👨‍💻 Autor
 
@@ -645,12 +679,14 @@ Durante o projeto foram praticados:
 
 Estudante de Sistemas de Informação com foco em Cibersegurança.
 
----
+<br/>
 
 [![GitHub](https://img.shields.io/badge/Voltar_ao_Perfil-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pablogsantoscontato-ops)
 
----
+<br/>
 
 <sub>Desenvolvido com ❤️ para o aprendizado de redes</sub>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:0A66C2,100:00C6FF&height=120&section=footer" width="100%"/>
 
 </div>
