@@ -643,7 +643,7 @@ Durante o projeto foram praticados:
 
 **Pablo Gonçalves Santos**
 
-Estudante de Segurança Cibernética com foco em Redes e Cibersegurança.
+Estudante de Sistemas de Informação com foco em Cibersegurança.
 
 ---
 
